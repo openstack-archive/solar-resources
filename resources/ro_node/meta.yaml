@@ -1,8 +1,0 @@
-id: mariadb
-handler: none
-version: 1.0.0
-actions:
-input:
-    ip:
-    ssh_key:
-    user:
