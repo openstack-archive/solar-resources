@@ -1,0 +1,16 @@
+id: haproxy_config
+handler: none
+version: 1.0.0
+input:
+    name:
+      schema: str!
+      value:
+    listen_port:
+      schema: int!
+      value:
+    ports:
+      schema: [int]
+      value:
+    servers:
+      schema: [str]
+      value:
