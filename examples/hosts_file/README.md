@@ -2,7 +2,7 @@ Very simple solar example two nodes + hosts file mapping
 
 Run:
 
-`python examples/hosts_file/hosts.py`
+`python solar-resources/examples/hosts_file/hosts.py`
 
 Then you can continue with standard solar things:
 
@@ -78,7 +78,7 @@ How to discard pending changes ?
 
 After database was populated by some example, lets say
 ```
-python examples/hosts_file/hosts.py deploy
+python solar-resources/examples/hosts_file/hosts.py deploy
 ```
 
 User is able to discard all changes with

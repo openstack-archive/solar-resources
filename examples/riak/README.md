@@ -2,7 +2,7 @@ Example of 3 node riak cluster.
 
 At first run:
 
-`python examples/riak/riaks.py deploy`
+`python solar-resources/examples/riak/riaks.py deploy`
 
 It will prepare riak nodes etc.
 
@@ -18,7 +18,7 @@ watch -n 1 solar orch report last
 Wait until all actions have state `SUCCESS`
 After that you can add HAProxy on each node:
 
-`python examples/riak/riaks.py add_haproxies`
+`python solar-resources/examples/riak/riaks.py add_haproxies`
 
 Then again normal solar stuff
 

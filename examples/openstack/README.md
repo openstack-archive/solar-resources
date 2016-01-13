@@ -2,7 +2,7 @@ Deploying simple two node OpenStack env.
 
 You need to run it from main solar directory. To prepare resources run:
 
-`python examples/openstack/openstack.py create_all`
+`python solar-resources/examples/openstack/openstack.py create_all`
 
 Then to start deployment:
 

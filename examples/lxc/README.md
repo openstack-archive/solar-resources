@@ -2,7 +2,7 @@ Bootstraping lxc containers using solar and roles from os-ansible-deployment
 
 At first run:
 
-`python examples/lxc/example-lxc.py deploy`
+`python solar-resources/examples/lxc/example-lxc.py deploy`
 
 It will do several things:
 

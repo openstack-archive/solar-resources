@@ -5,7 +5,7 @@ The example contains single node with single host mapping + transports.
 
 Execute:
 ```
-python examples/torrent/example.py
+python solar-resources/examples/torrent/example.py
 solar changes stage
 solar changes process
 solar orch run-once last
