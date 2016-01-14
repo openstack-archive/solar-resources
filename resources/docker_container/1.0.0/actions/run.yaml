@@ -35,3 +35,11 @@
          {{ key }}: {{ value }}
          {% endfor %}
        {% endif %}
+
+    - name: Waiting for app in container
+      when: {{wait_cmd}}
+      shell: docker exec -t {{ resource_name }} {{wait_cmd}}
+      register: result
+      until: result.rc == 0
+      retries: 30
+      delay: 0.5

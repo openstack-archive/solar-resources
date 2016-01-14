@@ -19,11 +19,12 @@ input:
     env:
       schema: {}
       value: {}
-    # ssh_user:
-    #   schema: str!
-    #   value: []
-    # ssh_key:
-    #   schema: str!
-    #   value: []
+    wait_cmd:
+      schema: str
+      value: null
+      computable:
+        lang: jinja2
+        type: full
+        func: ""
 
 tags: [resource/container]
