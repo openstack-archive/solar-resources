@@ -37,7 +37,7 @@
        {% endif %}
 
     - name: Waiting for app in container
-      when: {{wait_cmd}}
+      when: '"{{wait_cmd|e}}" != "None"'
       shell: docker exec -t {{ resource_name }} {{wait_cmd}}
       register: result
       until: result.rc == 0
