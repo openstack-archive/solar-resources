@@ -7,11 +7,13 @@ resources:
     input:
       ssh_user: 'vagrant'
       ssh_key: '/vagrant/.vagrant/machines/solar-dev#{j}#/virtualbox/private_key'
+      ssh_password: null
   - id: rsync#{j}#
     from: resources/transport_rsync
     input:
       user: vagrant
       key: /vagrant/.vagrant/machines/solar-dev#{j}#/virtualbox/private_key
+      password: null
   - id: transports#{j}#
     from: resources/transports
     input:
@@ -20,10 +22,12 @@ resources:
           user: ssh_transport#{j}#::ssh_user
           port: ssh_transport#{j}#::ssh_port
           name: ssh_transport#{j}#::name
+          password: ssh_transport#{j}#::ssh_password
         - key: rsync#{j}#::key
           name: rsync#{j}#::name
           user: rsync#{j}#::user
           port: rsync#{j}#::port
+          password: rsync#{j}#::password
   - id: node#{j}#
     from: resources/ro_node
     input:
