@@ -20,8 +20,8 @@ def run():
     transports_for_solar_agent = cr.create('transports_for_solar_agent', 'resources/transports')[0]
 
     ssh_transport  = cr.create('ssh_transport', 'resources/transport_ssh',
-                               {'ssh_key': '/vagrant/.vagrant/machines/solar-dev1/virtualbox/private_key',
-                                'ssh_user': 'vagrant'})[0]
+                               {'key': '/vagrant/.vagrant/machines/solar-dev1/virtualbox/private_key',
+                                'user': 'vagrant'})[0]
 
     solar_agent_transport  = cr.create('solar_agent_transport', 'resources/transport_solar_agent',
                                   {'solar_agent_user': 'vagrant',
