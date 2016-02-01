@@ -5,14 +5,14 @@ resources:
   - id: ssh_transport#{ id }#
     from: resources/transport_ssh
     input:
-      ssh_user: 'root'
-      ssh_key: '/vagrant/tmp/keys/ssh_private'
+      user: 'root'
+      key: '/vagrant/tmp/keys/ssh_private'
   - id: transports#{id}#
     from: resources/transports
     input:
-      transports:key: ssh_transport#{id}#::ssh_key
-      transports:user: ssh_transport#{id}#::ssh_user
-      transports:port: ssh_transport#{id}#::ssh_port
+      transports:key: ssh_transport#{id}#::key
+      transports:user: ssh_transport#{id}#::user
+      transports:port: ssh_transport#{id}#::port
       transports:name: ssh_transport#{id}#::name
   - id: node_#{id}#
     from: resources/not_provisioned_node
@@ -26,14 +26,14 @@ resources:
   - id: ssh_transport_master
     from: resources/transport_ssh
     input:
-      ssh_user: 'vagrant'
-      ssh_key: '/vagrant/.vagrant/machines/solar-dev/virtualbox/private_key'
+      user: 'vagrant'
+      key: '/vagrant/.vagrant/machines/solar-dev/virtualbox/private_key'
   - id: transports_master
     from: resources/transports
     input:
-      transports:key: ssh_transport_master::ssh_key
-      transports:user: ssh_transport_master::ssh_user
-      transports:port: ssh_transport_master::ssh_port
+      transports:key: ssh_transport_master::key
+      transports:user: ssh_transport_master::user
+      transports:port: ssh_transport_master::port
       transports:name: ssh_transport_master::name
   - id: node_master
     from: resources/ro_node

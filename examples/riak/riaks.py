@@ -33,6 +33,7 @@ def setup_riak():
     ModelMeta.remove_all()
     resources = cr.create('nodes', 'templates/nodes', {'count': 3})
     nodes = resources.like('node')
+
     hosts_services = resources.like('hosts_file')
     node1, node2, node3 = nodes
 
@@ -217,9 +218,9 @@ def add_solar_agent(i):
     # install solar_agent with ssh
     signals.connect(transports_for_solar_agent, solar_agent_transport, {})
 
-    signals.connect(ssh_transport, transports_for_solar_agent, {'ssh_key': 'transports:key',
-                                                           'ssh_user': 'transports:user',
-                                                           'ssh_port': 'transports:port',
+    signals.connect(ssh_transport, transports_for_solar_agent, {'key': 'transports:key',
+                                                           'user': 'transports:user',
+                                                           'port': 'transports:port',
                                                            'name': 'transports:name'})
 
     # add solar_agent to transports on this node

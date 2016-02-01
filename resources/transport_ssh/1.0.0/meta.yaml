@@ -1,14 +1,14 @@
 input:
-  ssh_key:
+  key:
     schema: str
     value:
-  ssh_password:
+  password:
     schema: str
     value:
-  ssh_user:
+  user:
     schema: str!
     value:
-  ssh_port:
+  port:
     schema: int!
     value: 22
   name:
