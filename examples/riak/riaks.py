@@ -18,6 +18,7 @@ from solar.core import resource
 from solar.core import signals
 from solar.core import validation
 from solar.core.resource import composer as cr
+from solar.core.resource import resource as rs
 from solar import errors
 
 from solar.dblayer.model import ModelMeta
@@ -29,13 +30,9 @@ from solar.dblayer.solar_models import Resource
 
 
 def setup_riak():
-
-    ModelMeta.remove_all()
-    resources = cr.create('nodes', 'templates/nodes', {'count': 3})
-    nodes = resources.like('node')
-
-    hosts_services = resources.like('hosts_file')
-    node1, node2, node3 = nodes
+    nodes = rs.load_all(startswith='node')
+    hosts_services = rs.load_all(startswith='hosts_file')
+    node1, node2, node3 = nodes[:3]
 
     riak_services = []
     ips = '10.0.0.%d'
@@ -73,9 +70,9 @@ def setup_riak():
         sys.exit(1)
 
     events = [
-        Dep('hosts_file1', 'run', 'success', 'riak_service1', 'run'),
-        Dep('hosts_file2', 'run', 'success', 'riak_service2', 'run'),
-        Dep('hosts_file3', 'run', 'success', 'riak_service3', 'run'),
+        Dep('hosts_file_node_node1', 'run', 'success', 'riak_service1', 'run'),
+        Dep('hosts_file_node_node2', 'run', 'success', 'riak_service2', 'run'),
+        Dep('hosts_file_node_node3', 'run', 'success', 'riak_service3', 'run'),
 
         React('riak_service2', 'run', 'success', 'riak_service2', 'join'),
         React('riak_service3', 'run', 'success', 'riak_service3', 'join'),

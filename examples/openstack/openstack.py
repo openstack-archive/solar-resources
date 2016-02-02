@@ -40,8 +40,7 @@ def main():
 
 
 def prepare_nodes(nodes_count):
-    resources = cr.create('nodes', 'templates/nodes', {"count": nodes_count})
-    nodes = resources.like('node')
+    nodes = resource.load_all(startswith='node')
     resources = cr.create('nodes_network', 'templates/nodes_network', {"count": nodes_count})
     nodes_sdn = resources.like('node')
     r = {}
@@ -826,7 +825,6 @@ def create_compute(node):
 
 @click.command()
 def create_all():
-    ModelMeta.remove_all()
     r = prepare_nodes(2)
     r.update(create_controller('node1'))
     r.update(create_compute('node2'))
