@@ -15,16 +15,16 @@ def run():
 
     transports = cr.create('transports_node1', 'resources/transports')[0]
 
-    ssh_transport = cr.create('ssh_transport', 'resources/transport_ssh',
-                              {'ssh_key': '/vagrant/.vagrant/machines/solar-dev1/virtualbox/private_key',
-                               'ssh_user': 'vagrant'})[0]
+    ssh_transport = cr.create('transport', 'resources/transport_ssh',
+                              {'key': '/vagrant/.vagrant/machines/solar-dev1/virtualbox/private_key',
+                               'user': 'vagrant'})[0]
 
     transports.connect(node, {})
 
     # it uses reverse mappings
-    ssh_transport.connect(transports, {'ssh_key': 'transports:key',
-                                       'ssh_user': 'transports:user',
-                                       'ssh_port': 'transports:port',
+    ssh_transport.connect(transports, {'key': 'transports:key',
+                                       'user': 'transports:user',
+                                       'port': 'transports:port',
                                        'name': 'transports:name'})
 
     hosts = cr.create('hosts_file', 'resources/hosts_file', {})[0]
@@ -42,9 +42,9 @@ def run():
 
     transports_for_torrent.connect(torrent_transport, {})
 
-    ssh_transport.connect_with_events(transports_for_torrent, {'ssh_key': 'transports:key',
-                                                               'ssh_user': 'transports:user',
-                                                               'ssh_port': 'transports:port',
+    ssh_transport.connect_with_events(transports_for_torrent, {'key': 'transports:key',
+                                                               'user': 'transports:user',
+                                                               'port': 'transports:port',
                                                                'name': 'transports:name'},
                                       events={})
 
@@ -54,9 +54,9 @@ def run():
     torrent_transport.connect(transports_for_hosts, {'trackers': 'transports:trackers',
                                                      'name': 'transports:name'})
 
-    ssh_transport.connect(transports_for_hosts, {'ssh_key': 'transports:key',
-                                                 'ssh_user': 'transports:user',
-                                                 'ssh_port': 'transports:port',
+    ssh_transport.connect(transports_for_hosts, {'key': 'transports:key',
+                                                 'user': 'transports:user',
+                                                 'port': 'transports:port',
                                                  'name': 'transports:name'})
 
     transports_for_hosts.connect(hosts)
