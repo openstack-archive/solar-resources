@@ -1,34 +1,15 @@
 import time
 
 from solar.core.resource import composer as cr
+from solar.core.resource import resource as rs
 from solar import errors
 from solar.dblayer.model import ModelMeta
+from solar.core.transports.base import locate_named_transport_resoruce
 
 
 def run():
-    ModelMeta.remove_all()
-
-    node = cr.create('node', 'resources/ro_node', {'name': 'first' + str(time.time()),
-                                                   'ip': '10.0.0.3',
-                                                   'node_id': 'node1',
-                                                   })[0]
-
-    transports = cr.create('transports_node1', 'resources/transports')[0]
-
-    ssh_transport = cr.create('transport', 'resources/transport_ssh',
-                              {'key': '/vagrant/.vagrant/machines/solar-dev1/virtualbox/private_key',
-                               'user': 'vagrant'})[0]
-
-    transports.connect(node, {})
-
-    # it uses reverse mappings
-    ssh_transport.connect(transports, {'key': 'transports:key',
-                                       'user': 'transports:user',
-                                       'port': 'transports:port',
-                                       'name': 'transports:name'})
-
-    hosts = cr.create('hosts_file', 'resources/hosts_file', {})[0]
-
+    node1 = rs.load_all(startswith='node')[0]
+    hosts1 = rs.load_all(startswith='hosts_file')[0]
     # let's add torrent transport for hosts file deployment (useless in real life)
 
     torrent_transport = cr.create('torrent_transport',
@@ -42,7 +23,10 @@ def run():
 
     transports_for_torrent.connect(torrent_transport, {})
 
+    ssh_transport = locate_named_transport_resoruce(node1, 'ssh')
+
     ssh_transport.connect_with_events(transports_for_torrent, {'key': 'transports:key',
+                                                               'password': 'transports:password',
                                                                'user': 'transports:user',
                                                                'port': 'transports:port',
                                                                'name': 'transports:name'},
@@ -55,14 +39,15 @@ def run():
                                                      'name': 'transports:name'})
 
     ssh_transport.connect(transports_for_hosts, {'key': 'transports:key',
+                                                 'password': 'transports:password',
                                                  'user': 'transports:user',
                                                  'port': 'transports:port',
                                                  'name': 'transports:name'})
 
-    transports_for_hosts.connect(hosts)
-    transports_for_hosts.connect_with_events(node, events={})
+    transports_for_hosts.connect(hosts1)
+    transports_for_hosts.connect_with_events(node1, events={})
 
-    node.connect(hosts, {
+    node1.connect(hosts1, {
         'ip': 'hosts:ip',
         'name': 'hosts:name'
     })
