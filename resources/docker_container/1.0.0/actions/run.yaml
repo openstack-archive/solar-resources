@@ -41,5 +41,5 @@
       shell: docker exec -t {{ resource_name }} {{wait_cmd}}
       register: result
       until: result.rc == 0
-      retries: 30
-      delay: 0.5
+      retries: 15
+      delay: 1
