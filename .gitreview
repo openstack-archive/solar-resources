@@ -1,5 +1,4 @@
 [gerrit]
 host=review.openstack.org
 port=29418
-project=openstack/solar.git
-
+project=openstack/solar-resources.git
