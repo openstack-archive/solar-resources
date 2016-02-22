@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     {% for val in hosts %}
     - name: Create hosts entries for {{val['name']}} => {{val['ip']}}

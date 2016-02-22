@@ -1,6 +1,6 @@
 
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - shell: docker --version
       ignore_errors: true

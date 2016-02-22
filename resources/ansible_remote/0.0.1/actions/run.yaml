@@ -1,5 +1,5 @@
 - hosts: '*'
-  sudo: yes
+  become: yes
   vars:
     default1: playbook
   tasks:

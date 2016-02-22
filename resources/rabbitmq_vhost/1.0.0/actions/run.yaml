@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
       - rabbitmq_vhost: name={{vhost_name}}
                         state=present

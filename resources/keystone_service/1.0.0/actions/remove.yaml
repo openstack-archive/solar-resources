@@ -1,6 +1,6 @@
 # TODO
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - name: keystone container
       docker:

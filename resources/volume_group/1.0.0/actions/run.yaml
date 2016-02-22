@@ -1,5 +1,5 @@
 - hosts: [{{ host }}]
-  sudo: yes
+  become: yes
   tasks:
     - name: install dependencies 
       apt: name=lvm2 state=present

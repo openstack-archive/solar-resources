@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - shell: echo 'Managed by solar' > /etc/apt/sources.list
       when: {{ensure_other_removed}}

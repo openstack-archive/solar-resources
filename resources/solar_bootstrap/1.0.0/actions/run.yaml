@@ -2,7 +2,7 @@
 
 # TODO: this shouldn't be outside of the resource directory
 - hosts: all
-  sudo: yes
+  become: yes
   tasks:
     - script: /vagrant/bootstrap/playbooks/files/ubuntu-ansible.sh
 #- include: celery.yaml tags=['master'] celery_dir=/var/run/celery

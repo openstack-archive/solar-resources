@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     # XXX: check apt package http://packages.ubuntu.com/trusty/ruby/librarian-puppet
     - shell: gem install librarian-puppet --no-ri --no-rdoc

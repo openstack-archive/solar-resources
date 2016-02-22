@@ -1,6 +1,6 @@
 
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - docker:
        command: /bin/bash -c "glance-manage db_sync && /usr/bin/glance-api"

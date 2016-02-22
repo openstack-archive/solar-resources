@@ -1,5 +1,5 @@
 - hosts: '*'
-  sudo: yes
+  become: yes
   vars:
     id: 42
     group: 239.1.10.2

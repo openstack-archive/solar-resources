@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - file: path=/var/lib/docker/data/{{resource_name}} state=directory
     - name: mariadb container

@@ -1,5 +1,5 @@
 - hosts: [{{ host }}]
-  sudo: yes
+  become: yes
   tasks:
     - name: remove VG
       lvg: vg={{name}} state=absent force=yes

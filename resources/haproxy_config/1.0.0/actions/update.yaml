@@ -1,6 +1,6 @@
 # TODO
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   vars:
     config_dir: {src: {{ config_dir['src'] }}, dst: {{ config_dir['dst'] }}}
     haproxy_ip: {{ ip }}

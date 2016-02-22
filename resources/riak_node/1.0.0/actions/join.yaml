@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - shell: riak-admin cluster join {{join_to}}
       ignore_errors: true

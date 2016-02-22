@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - rabbitmq_user: user={{user_name}}
                      vhost={{vhost_name}}

@@ -1,5 +1,5 @@
 - hosts: '*'
-  sudo: yes
+  become: yes
   gather_facts: false
   # this is default variables, they will be overwritten by resource one
   vars:

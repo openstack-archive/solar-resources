@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   vars:
     admin_token: {{admin_token}}
     keystone_host: {{ ip }}

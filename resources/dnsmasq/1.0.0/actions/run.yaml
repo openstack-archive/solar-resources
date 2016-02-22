@@ -1,2 +1,2 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes

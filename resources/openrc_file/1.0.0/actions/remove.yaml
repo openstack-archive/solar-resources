@@ -1,5 +1,5 @@
 - hosts: [ {{ host }} ]
-  sudo: yes
+  become: yes
   tasks:
     - file: path=/root/openrc state=absent
 

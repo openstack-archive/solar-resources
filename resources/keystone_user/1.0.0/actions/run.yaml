@@ -1,5 +1,5 @@
 - hosts: [{{host}}]
-  sudo: yes
+  become: yes
   tasks:
     - name: install python-keystoneclient
       shell: apt-get install python-keystoneclient
