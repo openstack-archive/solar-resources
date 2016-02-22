@@ -1,11 +1,28 @@
 - hosts: [{{host}}]
   become: yes
   tasks:
+    # those shell/copy below are hacky solution for https://github.com/docker/docker/issues/9295
+    - shell: md5sum /etc/hosts
+      register: fence_token
+
+    - copy: src=/etc/hosts dest=/tmp/hosts
+
     {% for val in hosts %}
     - name: Create hosts entries for {{val['name']}} => {{val['ip']}}
       lineinfile:
-        dest: /etc/hosts
+        dest: /tmp/hosts
         regexp: ".*{{val['name']}}$"
         line: "{{val['ip']}} {{val['name']}}"
         state: present
     {% endfor %}
+
+    - shell: md5sum /etc/hosts
+      register: current_state
+
+    - shell: cp -f /tmp/hosts /etc/hosts
+      when: current_state.stdout.find(fence_token.stdout) != -1
+
+    - file: path=/tmp/hosts state=absent
+
+    - shell: /bin/false
+      when: current_state.stdout.find(fence_token.stdout) == -1
