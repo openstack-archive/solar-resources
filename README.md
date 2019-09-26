@@ -1,3 +1,3 @@
-solar-resources are resources definitions and example deployments for solar project.
+# This repo has moved to OpenDev
 
-For more information about Solar project refer to http://solar.readthedocs.org
+It can now be found at [https://opendev.org/x/solar-resources](https://opendev.org/x/solar-resources)

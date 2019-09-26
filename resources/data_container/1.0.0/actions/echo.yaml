@@ -1,5 +1,0 @@
-
-- hosts: [{{host}}]
-  become: yes
-  tasks:
-    - shell: echo `/sbin/ifconfig`

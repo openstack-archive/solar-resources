@@ -1,7 +1,0 @@
-
-- hosts: [{{ host }}]
-  become: yes
-  tasks:
-    - service:
-        name: haproxy
-        state: reloaded

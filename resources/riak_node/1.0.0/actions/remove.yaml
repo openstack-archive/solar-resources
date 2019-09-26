@@ -1,6 +1,0 @@
-- hosts: [{{host}}]
-  become: yes
-  tasks:
-    - apt:
-        name: riak
-        state: absent

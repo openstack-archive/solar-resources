@@ -1,5 +1,0 @@
-- hosts: [ {{ host }} ]
-  become: yes
-  tasks:
-    - file: path=/root/openrc state=absent
-

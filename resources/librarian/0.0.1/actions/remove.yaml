@@ -1,6 +1,0 @@
-- hosts: [{{host}}]
-  become: yes
-  tasks:
-    - file: path={{modules_path}} state=absent
-    - file: path={{modules_path}}/../Puppetfile state=absent
-    - shell: gem uninstall librarian-puppet

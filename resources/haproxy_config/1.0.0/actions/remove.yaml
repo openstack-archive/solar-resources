@@ -1,5 +1,0 @@
-# TODO
-- hosts: [{{host}}]
-  become: yes
-  tasks:
-    - file: path={{ config_dir.value['src'] }} state=absent
